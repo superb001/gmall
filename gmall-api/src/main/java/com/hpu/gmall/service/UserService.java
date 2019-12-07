@@ -1,7 +1,7 @@
-package com.hpu.gmall.user.service;
+package com.hpu.gmall.service;
 
-import com.hpu.gmall.user.pojo.UmsMember;
-import com.hpu.gmall.user.pojo.UmsMemberReceiveAddress;
+import com.hpu.gmall.pojo.UmsMember;
+import com.hpu.gmall.pojo.UmsMemberReceiveAddress;
 
 import java.util.List;
 

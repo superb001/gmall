@@ -6,10 +6,10 @@
 
 
 
-    <select id="selectAllUser" resultType="com.hpu.gmall.user.pojo.UmsMember">
+    <select id="selectAllUser" resultType="com.hpu.gmall.pojo.UmsMember">
         select * from ums_member
     </select>
-    <select id="selectReceiveAddressByMemberId" resultType="com.hpu.gmall.user.pojo.UmsMemberReceiveAddress">
+    <select id="selectReceiveAddressByMemberId" resultType="com.hpu.gmall.pojo.UmsMemberReceiveAddress">
         select * from ums_member_receive_address where member_id = #{memberId}
     </select>
 

@@ -1,4 +1,4 @@
-package com.hpu.gmall.user.pojo;
+package com.hpu.gmall.pojo;
 
 import javax.persistence.Id;
 import java.io.Serializable;

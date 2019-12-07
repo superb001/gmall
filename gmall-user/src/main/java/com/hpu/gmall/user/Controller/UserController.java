@@ -1,8 +1,8 @@
 package com.hpu.gmall.user.Controller;
 
-import com.hpu.gmall.user.pojo.UmsMember;
-import com.hpu.gmall.user.pojo.UmsMemberReceiveAddress;
-import com.hpu.gmall.user.service.UserService;
+import com.hpu.gmall.pojo.UmsMember;
+import com.hpu.gmall.pojo.UmsMemberReceiveAddress;
+import com.hpu.gmall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

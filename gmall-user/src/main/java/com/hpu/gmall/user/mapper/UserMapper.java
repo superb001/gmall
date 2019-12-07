@@ -1,7 +1,7 @@
 package com.hpu.gmall.user.mapper;
 
-import com.hpu.gmall.user.pojo.UmsMember;
-import com.hpu.gmall.user.pojo.UmsMemberReceiveAddress;
+import com.hpu.gmall.pojo.UmsMember;
+import com.hpu.gmall.pojo.UmsMemberReceiveAddress;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
