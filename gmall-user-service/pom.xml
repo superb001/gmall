@@ -7,13 +7,12 @@
         <groupId>com.hpu</groupId>
         <artifactId>gmall-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.hpu</groupId>
-    <artifactId>gmall-user</artifactId>
+    <artifactId>gmall-user-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>gmall-user</name>
+    <name>gmall-user-service</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -33,13 +32,6 @@
             <artifactId>gmall-service-util</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!--前端-->
-        <dependency>
-            <groupId>com.hpu</groupId>
-            <artifactId>gmall-web-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
     <build>

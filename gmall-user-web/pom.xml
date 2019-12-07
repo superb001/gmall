@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>com.hpu</groupId>
         <artifactId>gmall-parent</artifactId>
@@ -11,9 +10,9 @@
     </parent>
 
     <groupId>com.hpu</groupId>
-    <artifactId>gmall-user</artifactId>
+    <artifactId>gmall-user-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>gmall-user</name>
+    <name>gmall-user-web</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -25,12 +24,6 @@
         <dependency>
             <groupId>com.hpu</groupId>
             <artifactId>gmall-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <!--后端数据库相关-->
-        <dependency>
-            <groupId>com.hpu</groupId>
-            <artifactId>gmall-service-util</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!--前端-->

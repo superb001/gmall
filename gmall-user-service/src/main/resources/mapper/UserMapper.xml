@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hpu.gmall.user.mapper.UserMapper">
+
+
+
+    <select id="selectAllUser" resultType="com.hpu.gmall.pojo.UmsMember">
+        select * from ums_member
+    </select>
+    <select id="selectReceiveAddressByMemberId" resultType="com.hpu.gmall.pojo.UmsMemberReceiveAddress">
+        select * from ums_member_receive_address where member_id = #{memberId}
+    </select>
+
+</mapper>
