@@ -14,4 +14,8 @@ public interface AttrService {
      * @Description: 根据attrId查属性值信息
      */
     List<PmsBaseAttrValue> getAttrValueList(String attrId);
+    /**
+     * @Description: 保存属性和属性值两张表
+     */
+    String saveAttrInfo(PmsBaseAttrInfo pmsBaseAttrInfo);
 }

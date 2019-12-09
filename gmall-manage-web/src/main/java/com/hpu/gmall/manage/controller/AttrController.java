@@ -36,21 +36,27 @@ public class AttrController {
         return pmsBaseAttrInfos;
     }
     /**
-     * @Description: 添加属性值
+     * @Description: 保存属性和属性值两张表，修改
      */
     @RequestMapping("saveAttrInfo")
     @ResponseBody
     public String saveAttrInfo(@RequestBody PmsBaseAttrInfo pmsBaseAttrInfo){
-
+        String success = attrService.saveAttrInfo(pmsBaseAttrInfo);
         return "success";
     }
 
 
+
+
+
+
+    /**
+     * @Description: 根据属性主键获取属性值的list对象
+     */
     @RequestMapping("getAttrValueList")
     @ResponseBody
     public List<PmsBaseAttrValue> getAttrValueList(String attrId){
         List<PmsBaseAttrValue> pmsBaseAttrValues = attrService.getAttrValueList(attrId);
-
         return pmsBaseAttrValues;
     }
 
