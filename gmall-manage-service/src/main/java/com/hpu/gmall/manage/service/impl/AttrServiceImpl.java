@@ -3,8 +3,10 @@ package com.hpu.gmall.manage.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.hpu.gmall.manage.mapper.PmsBaseAttrInfoMapper;
 import com.hpu.gmall.manage.mapper.PmsBaseAttrValueMapper;
+import com.hpu.gmall.manage.mapper.PmsBaseSaleAttrMapper;
 import com.hpu.gmall.pojo.PmsBaseAttrInfo;
 import com.hpu.gmall.pojo.PmsBaseAttrValue;
+import com.hpu.gmall.pojo.PmsBaseSaleAttr;
 import com.hpu.gmall.service.AttrService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ public class AttrServiceImpl implements AttrService {
     PmsBaseAttrInfoMapper pmsBaseAttrInfoMapper;
     @Autowired
     PmsBaseAttrValueMapper pmsBaseAttrValueMapper;
+    @Autowired
+    PmsBaseSaleAttrMapper pmsBaseSaleAttrMapper;
 
     /**
      * @Description: 根据catalog3Id查询属性信息
@@ -51,10 +55,22 @@ public class AttrServiceImpl implements AttrService {
     /**
      * @param pmsBaseAttrInfo
      * @Description: 保存属性和属性值两张表
+     * TODO: 缺少事务,以及自己定义的异常
      */
     @Override
     public String saveAttrInfo(PmsBaseAttrInfo pmsBaseAttrInfo) {
         String id = pmsBaseAttrInfo.getId();
+
+
+        //TODO:实现：当将属性值删完时，属性也自动删除
+        /*if(pmsBaseAttrInfo.getAttrValueList() == null) {
+            if(StringUtils.isBlank(id) ){
+                //第一次保存，不添加属性值，保存失败，直接弹出
+            } else {
+                // 修改后保存时List<PmsBaseAttrValue>为空，删除pmsBaseAttrInfo主表
+            }
+        }*/
+
 
         //如果id为空或null或“  ”，就是新添加提交过来的数据，没有主键，直接保存
         if(StringUtils.isBlank(id)){
@@ -90,10 +106,27 @@ public class AttrServiceImpl implements AttrService {
             //删除后重新迭代插入新数据
             List<PmsBaseAttrValue> pmsBaseAttrValues = pmsBaseAttrInfo.getAttrValueList();
             for (PmsBaseAttrValue pmsBaseAttrValue : pmsBaseAttrValues) {
+
+                // A:防止二次修改时，继续添加新属性值：把主表的主键作为外键保存重新赋值一遍
+                // pmsBaseAttrValue.setAttrId(pmsBaseAttrInfo.getId());
+                // B:也可以做判断，为空的才赋值
+                if(StringUtils.isBlank(pmsBaseAttrValue.getAttrId())) {
+                    pmsBaseAttrValue.setAttrId(pmsBaseAttrInfo.getId());
+                }
+
                 pmsBaseAttrValueMapper.insertSelective(pmsBaseAttrValue);
             }
         }
         return "success";
+    }
+
+    /**
+     * @Description: 查询销售属性
+     */
+    @Override
+    public List<PmsBaseSaleAttr> baseSaleAttrList() {
+        List<PmsBaseSaleAttr> pmsBaseSaleAttrs = pmsBaseSaleAttrMapper.selectAll();
+        return pmsBaseSaleAttrs;
     }
 
 
