@@ -1,6 +1,8 @@
 package com.hpu.gmall.manage.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.hpu.gmall.manage.util.PmsUploadUtil;
+import com.hpu.gmall.manage.util.QiNiuPmsUploadUtil;
 import com.hpu.gmall.pojo.PmsProductInfo;
 import com.hpu.gmall.service.SpuService;
 import org.springframework.stereotype.Controller;
@@ -39,11 +41,10 @@ public class SpuController {
     @ResponseBody
     public String fileUpload(@RequestParam("file") MultipartFile multipartFile) {
         // @RequestParam("file") MultipartFile multipartFile   接收前端传来的二进制流
-        // 将图片或者音视频上传到分布式的文件存储系统
-
+        // 将图片或者音视频上传到分布式的文件存储系统,返回资源url路径
+        //String imgUrl = PmsUploadUtil.uploadImage(multipartFile);
+        String imgUrl = QiNiuPmsUploadUtil.uploadImage(multipartFile);
         // 将图片的存储路径返回给页面
-        String imgUrl = "https://m.360buyimg.com/babel/jfs/t5137/20/1794970752/352145/d56e4e94/591417dcN4fe5ef33.jpg";
-
         return imgUrl;
     }
 
