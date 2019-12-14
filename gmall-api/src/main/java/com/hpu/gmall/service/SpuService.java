@@ -17,4 +17,8 @@ public interface SpuService {
      * @Description: 根据catalog3Id查询spu的系列商品信息
      */
     List<PmsProductInfo> spuList(String catalog3Id);
+    /**
+     * @Description: 保存spu信息：系列商品信息
+     */
+    void saveSpuInfo(PmsProductInfo pmsProductInfo);
 }

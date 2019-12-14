@@ -33,8 +33,7 @@ public class CatalogController {
     @ResponseBody
     public List<PmsBaseCatalog1> getCatalog1() {
         List<PmsBaseCatalog1> pmsBaseCatalog1List = catalogService.getCatalog1();
-        return pmsBaseCatalog1List;
-    }
+        return pmsBaseCatalog1List; }
 
     /**
      * @Description: 查看二级目录

@@ -38,7 +38,11 @@ public class AttrServiceImpl implements AttrService {
     public List<PmsBaseAttrInfo> attrInfoList(String catalog3Id) {
         PmsBaseAttrInfo pmsBaseAttrInfo = new PmsBaseAttrInfo();
         pmsBaseAttrInfo.setCatalog3Id(catalog3Id);
-        return pmsBaseAttrInfoMapper.select(pmsBaseAttrInfo);
+        List<PmsBaseAttrInfo> pmsBaseAttrInfos = pmsBaseAttrInfoMapper.select(pmsBaseAttrInfo);
+
+        // 通用mapper只能查单表，主表中子表的list集合需要根据主表主键手动查询添加。向PmsBaseAttrInfo里面添加属性值
+
+        return pmsBaseAttrInfos;
     }
 
     /**

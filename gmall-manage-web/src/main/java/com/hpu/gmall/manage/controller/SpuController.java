@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.hpu.gmall.manage.util.PmsUploadUtil;
 import com.hpu.gmall.manage.util.QiNiuPmsUploadUtil;
 import com.hpu.gmall.pojo.PmsProductInfo;
+import com.hpu.gmall.pojo.PmsProductSaleAttr;
 import com.hpu.gmall.service.SpuService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -42,8 +43,8 @@ public class SpuController {
     public String fileUpload(@RequestParam("file") MultipartFile multipartFile) {
         // @RequestParam("file") MultipartFile multipartFile   接收前端传来的二进制流
         // 将图片或者音视频上传到分布式的文件存储系统,返回资源url路径
-        //String imgUrl = PmsUploadUtil.uploadImage(multipartFile);
-        String imgUrl = QiNiuPmsUploadUtil.uploadImage(multipartFile);
+        String imgUrl = PmsUploadUtil.uploadImage(multipartFile);
+        // String imgUrl = QiNiuPmsUploadUtil.uploadImage(multipartFile);
         // 将图片的存储路径返回给页面
         return imgUrl;
     }
@@ -54,10 +55,21 @@ public class SpuController {
     @RequestMapping("saveSpuInfo")
     @ResponseBody
     public String saveSpuInfo(@RequestBody PmsProductInfo pmsProductInfo){
-
-
+        spuService.saveSpuInfo(pmsProductInfo);
         return "success";
     }
+
+
+    /**
+     * @Description: 根据商品id查询销售属性
+     */
+    /*@RequestMapping("spuSaleAttrList")
+    @ResponseBody
+    public List<PmsProductSaleAttr> spuSaleAttrList(String spuId){  //spuId就是proudctId
+        List<PmsProductSaleAttr> pmsProductSaleAttrs = spuService.spuSaleAttrList(spuId);
+        return pmsProductSaleAttrs;
+    }*/
+
 
 
 
