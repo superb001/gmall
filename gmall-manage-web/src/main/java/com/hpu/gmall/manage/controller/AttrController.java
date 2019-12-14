@@ -34,6 +34,7 @@ public class AttrController {
     @ResponseBody
     public List<PmsBaseAttrInfo> attrInfoList(String catalog3Id) {
         List<PmsBaseAttrInfo> pmsBaseAttrInfos = attrService.attrInfoList(catalog3Id);
+
         return pmsBaseAttrInfos;
     }
     /**

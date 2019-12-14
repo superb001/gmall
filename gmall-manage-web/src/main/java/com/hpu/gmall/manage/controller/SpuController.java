@@ -3,6 +3,7 @@ package com.hpu.gmall.manage.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.hpu.gmall.manage.util.PmsUploadUtil;
 import com.hpu.gmall.manage.util.QiNiuPmsUploadUtil;
+import com.hpu.gmall.pojo.PmsProductImage;
 import com.hpu.gmall.pojo.PmsProductInfo;
 import com.hpu.gmall.pojo.PmsProductSaleAttr;
 import com.hpu.gmall.service.SpuService;
@@ -63,12 +64,22 @@ public class SpuController {
     /**
      * @Description: 根据商品id查询销售属性
      */
-    /*@RequestMapping("spuSaleAttrList")
+    @RequestMapping("spuSaleAttrList")
     @ResponseBody
     public List<PmsProductSaleAttr> spuSaleAttrList(String spuId){  //spuId就是proudctId
         List<PmsProductSaleAttr> pmsProductSaleAttrs = spuService.spuSaleAttrList(spuId);
         return pmsProductSaleAttrs;
-    }*/
+    }
+
+    /**
+     * @Description: 根据商品id查询平台图片信息
+     */
+    @RequestMapping("spuImageList")
+    @ResponseBody
+    public List<PmsProductImage> spuImageList(String spuId){  //spuId就是proudctId
+        List<PmsProductImage> pmsProductImages = spuService.spuImageList(spuId);
+        return pmsProductImages;
+    }
 
 
 

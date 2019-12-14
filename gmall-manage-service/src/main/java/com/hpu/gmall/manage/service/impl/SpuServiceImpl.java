@@ -89,4 +89,41 @@ public class SpuServiceImpl implements SpuService {
             }
         }
     }
+
+    /**
+     * @param spuId
+     * @Description: 根据商品id查询销售属性
+     */
+    @Override
+    public List<PmsProductSaleAttr> spuSaleAttrList(String spuId) {
+        // 创建查询条件
+        PmsProductSaleAttr pmsProductSaleAttr = new PmsProductSaleAttr();
+        pmsProductSaleAttr.setProductId(spuId);
+        List<PmsProductSaleAttr> PmsProductSaleAttrs = pmsProductSaleAttrMapper.select(pmsProductSaleAttr);
+
+        PmsProductSaleAttrValue pmsProductSaleAttrValue = new PmsProductSaleAttrValue();
+        pmsProductSaleAttrValue.setProductId(spuId);
+        // 每条productSaleAttr内插入 List<PmsProductSaleAttrValue>属性值
+        for (PmsProductSaleAttr productSaleAttr : PmsProductSaleAttrs) {
+
+            pmsProductSaleAttrValue.setSaleAttrId(productSaleAttr.getSaleAttrId());
+            List<PmsProductSaleAttrValue> spuSaleAttrValueList =
+                    pmsProductSaleAttrValueMapper.select(pmsProductSaleAttrValue);
+            productSaleAttr.setSpuSaleAttrValueList(spuSaleAttrValueList);
+        }
+
+        return PmsProductSaleAttrs;
+    }
+
+    /**
+     * @param spuId
+     * @Description: 根据商品id查询平台图片信息
+     */
+    @Override
+    public List<PmsProductImage> spuImageList(String spuId) {
+        PmsProductImage pmsProductImage = new PmsProductImage();
+        pmsProductImage.setProductId(spuId);
+        List<PmsProductImage> pmsProductImages = pmsProductImageMapper.select(pmsProductImage);
+        return pmsProductImages;
+    }
 }

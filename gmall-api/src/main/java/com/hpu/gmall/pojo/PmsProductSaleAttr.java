@@ -22,7 +22,6 @@ public class PmsProductSaleAttr implements Serializable {
     @Column
     String saleAttrName;
 
-
     @Transient
     List<PmsProductSaleAttrValue> spuSaleAttrValueList;
 
